@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Amiri:wght@400;700&family=Tajawal:wght@300;400;700&family=Scheherazade+New:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", "Tajawal", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Amiri", "Scheherazade New", serif;
+  
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-accent: #6b9fff;
+  --color-sunset-bg: #1a1028;
+}
+
+@layer base {
+  body {
+    @apply transition-colors duration-300 overflow-hidden antialiased;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .glass {
+    @apply backdrop-blur-[25px] border border-glass-border;
+  }
+  
+  .ios-shadow {
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Themes */
+  body.theme-dark {
+    @apply bg-[#0a0a0f] text-[#e8e6f0];
+    --color-glass: rgba(21, 21, 37, 0.7);
+    --color-glass-border: rgba(255, 255, 255, 0.06);
+  }
+  
+  body.theme-light {
+    @apply bg-[#f5f3f0] text-[#1a1a2e];
+    --color-glass: rgba(255, 255, 255, 0.8);
+    --color-glass-border: rgba(0, 0, 0, 0.06);
+  }
+  
+  body.theme-sunset {
+    @apply bg-[#1a1028] text-[#f0e6d8];
+    --color-glass: rgba(37, 26, 61, 0.75);
+    --color-glass-border: rgba(200, 160, 120, 0.1);
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-500/20 rounded-full;
+}
